@@ -66,8 +66,6 @@ router.post("/", async (req, res) => {
     }
 });
 
-module.exports = router;
-
 router.get("/:id", async (req, res) => {
     try {
         const { id } = req.params;
@@ -93,3 +91,5 @@ router.get("/:id", async (req, res) => {
         });
     }
 });
+
+module.exports = router;

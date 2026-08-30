@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const pool = require("./db/database");
 
 const applicationsRouter = require("./routes/applications");
@@ -7,6 +8,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3001;
 
+app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
