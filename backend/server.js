@@ -1,4 +1,7 @@
 const express = require("express");
+const pool = require("./db/database");
+
+const applicationsRouter = require("./routes/applications");
 
 const app = express();
 
@@ -19,8 +22,25 @@ app.get("/api/health", (req, res) => {
     });
 });
 
+app.use("/api/applications", applicationsRouter);
+
 app.listen(PORT, () => {
     console.log(
         `Love Thy Neighbor Housing backend running on port ${PORT}`
     );
+});
+
+app.get("/api/applications", async (req, res) => {
+    try {
+        const result = await pool.query(
+            "SELECT * FROM applications ORDER BY created_at DESC"
+        );
+
+        res.json(result.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            error: "Failed to retrieve applications"
+        });
+    }
 });
