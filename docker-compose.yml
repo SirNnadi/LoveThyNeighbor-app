@@ -15,5 +15,39 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+
+  backend:
+    build:
+      context: ./backend
+
+    container_name: housing-backend
+
+    environment:
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_NAME: housing
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+
+    ports:
+      - "3001:3001"
+
+    depends_on:
+      - database
+
+
+  frontend:
+    build:
+      context: ./frontend
+
+    container_name: housing-frontend
+
+    ports:
+      - "5173:5173"
+
+    depends_on:
+      - backend
+
+
 volumes:
   postgres_data:
