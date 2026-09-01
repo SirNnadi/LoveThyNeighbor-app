@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const pool = require("./db/database");
@@ -8,7 +9,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3001;
 
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: process.env.CORS_ORIGIN || "http://localhost:5173" }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -35,18 +36,3 @@ if (require.main === module) {
 }
 
 module.exports = app;
-
-app.get("/api/applications", async (req, res) => {
-    try {
-        const result = await pool.query(
-            "SELECT * FROM applications ORDER BY created_at DESC"
-        );
-
-        res.json(result.rows);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            error: "Failed to retrieve applications"
-        });
-    }
-});

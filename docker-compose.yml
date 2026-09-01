@@ -28,6 +28,7 @@ services:
       DB_NAME: housing
       DB_USER: postgres
       DB_PASSWORD: postgres
+      CORS_ORIGIN: http://34.226.205.196:5173
 
     ports:
       - "3001:3001"
@@ -44,6 +45,9 @@ services:
 
     ports:
       - "5173:5173"
+
+    environment:
+      VITE_API_URL: http://34.226.205.196:3001
 
     depends_on:
       - backend
