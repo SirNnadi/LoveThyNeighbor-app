@@ -5,12 +5,13 @@ on:
     branches:
       - main
       - development
-
+      - 'features/**'
+      
   pull_request:
     branches:
       - main
       - development
-
+      - 'features/**'
 jobs:
 
   backend-test:
