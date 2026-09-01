@@ -26,11 +26,15 @@ app.get("/api/health", (req, res) => {
 
 app.use("/api/applications", applicationsRouter);
 
-app.listen(PORT, () => {
-    console.log(
-        `Love Thy Neighbor Housing backend running on port ${PORT}`
-    );
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(
+            `Love Thy Neighbor Housing backend running on port ${PORT}`
+        );
+    });
+}
+
+module.exports = app;
 
 app.get("/api/applications", async (req, res) => {
     try {
