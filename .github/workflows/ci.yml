@@ -89,3 +89,9 @@ jobs:
           DB_PASSWORD: postgres
         working-directory: backend
         run: npm test
+
+      - name: Build backend Docker image
+        run: docker build -t love-thy-neighbor-backend ./backend
+
+      - name: Build frontend Docker image
+        run: docker build -t love-thy-neighbor-frontend ./frontend
