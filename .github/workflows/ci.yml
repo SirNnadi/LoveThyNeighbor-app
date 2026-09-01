@@ -6,11 +6,10 @@ on:
       - main
       - development
       - 'features/**'
-      
   pull_request:
     branches:
       - main
-      - development
+      - development    
       - 'features/**'
 jobs:
 
