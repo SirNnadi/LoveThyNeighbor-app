@@ -1,6 +1,6 @@
 # Love Thy Neighbor Housing
 
-Love Thy Neighbor Housing is a nonprofit housing assistance application designed to assist lower-income families apply for rental assistance.
+Love Thy Neighbor Housing is a non-profit housing assistance application designed to assist lower-income families apply for rental assistance.
 
 ## Project Components
 
